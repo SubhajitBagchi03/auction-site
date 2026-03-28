@@ -117,7 +117,7 @@ export default function AuctionPage() {
   // Overlay message box state (shown center screen)
   const [overlayMessage, setOverlayMessage] = useState(null);
   // Pending message to show on "Next Player" click (for over-budget)
-  const [pendingNextMessage, setPendingNextMessage] = useState(null);
+
 
   const heartbeatRef = useRef(null);
   const audioCtxRef = useRef(null);
@@ -194,36 +194,26 @@ export default function AuctionPage() {
         type: 'warning'
       });
     } else if (result.status === 'over_budget') {
-      // Store for showing when "Next Player" is clicked
-      setPendingNextMessage({
+      setOverlayMessage({
         title: '⚠️ Over Budget!',
         text: `${result.teamName} bidded more than remaining points! ${result.playerName} will NOT be added to the team and goes back to the auction pool.`,
-        type: 'error',
-        player: result.player
+        type: 'error'
       });
+      returnPlayerToPool(result.player);
     } else if (result.status === 'team_full') {
-      setPendingNextMessage({
+      setOverlayMessage({
         title: '⚠️ Team Full!',
         text: `${result.teamName} already has ${TEAM_SIZE} players! ${result.playerName} goes back to the auction pool.`,
-        type: 'error',
-        player: result.player
+        type: 'error'
       });
+      returnPlayerToPool(result.player);
     }
   };
 
   const handleUnsold = () => markUnsold();
 
-  // NEXT PLAYER: check pending messages, show before advancing
+  // NEXT PLAYER: straight to next player, messages are shown immediately now
   const handleNextPlayer = () => {
-    if (pendingNextMessage) {
-      // Show the message overlay
-      setOverlayMessage(pendingNextMessage);
-      // Put the player back in pool
-      if (pendingNextMessage.player) {
-        returnPlayerToPool(pendingNextMessage.player);
-      }
-      setPendingNextMessage(null);
-    }
     moveToNextPlayer();
   };
 
