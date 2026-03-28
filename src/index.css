@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Bubblegum+Sans&family=Luckiest+Guy&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Bubblegum Sans', cursive;
+  background: #4a8f3f;
+  color: #2d2d2d;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #3a7a30;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffcc00;
+  border-radius: 8px;
+  border: 2px solid #3a7a30;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffdd44;
+}
+
+::selection {
+  background: rgba(255, 204, 0, 0.4);
+  color: #1a3a10;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font: inherit;
+}
+
+input, select, textarea {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

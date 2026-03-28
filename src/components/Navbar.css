@@ -1,0 +1,108 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 70px;
+  background: linear-gradient(180deg, #2d6b1e 0%, #3a8a28 100%);
+  border-bottom: 4px solid #ffcc00;
+  box-shadow: 0 4px 0px #1a4a10, 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-logo {
+  font-size: 2.2rem;
+  animation: batSwing 2s ease-in-out infinite;
+}
+
+@keyframes batSwing {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(15deg); }
+}
+
+.navbar-title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.3rem;
+  color: #ffcc00;
+  text-shadow: 2px 2px 0px #b8860b, 3px 3px 0px rgba(0,0,0,0.3);
+  letter-spacing: 2px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-link {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.95rem;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 24px;
+  border-radius: 50px;
+  border: 3px solid transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.1);
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+}
+
+.nav-link::before {
+  display: none;
+}
+
+.nav-link:hover {
+  color: #1a3a10;
+  background: #ffcc00;
+  border-color: #e6b800;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 0px #b8860b, 0 6px 15px rgba(0,0,0,0.2);
+  text-shadow: none;
+}
+
+.nav-link.active {
+  color: #1a3a10;
+  background: #ffcc00;
+  border-color: #e6b800;
+  box-shadow: 0 3px 0px #b8860b;
+  text-shadow: none;
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+}
+
+.nav-fullscreen-btn {
+  font-size: 1.4rem;
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+  border: 3px solid transparent;
+  padding: 8px 14px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.nav-fullscreen-btn:hover {
+  color: #1a3a10;
+  background: #ffcc00;
+  border-color: #e6b800;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 0px #b8860b;
+}

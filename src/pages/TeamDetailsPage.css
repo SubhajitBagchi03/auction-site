@@ -1,0 +1,593 @@
+.team-details-page {
+  min-height: 100vh;
+  display: flex;
+  padding-top: 70px;
+  position: relative;
+  background:
+    linear-gradient(180deg,
+      #87ceeb 0%,
+      #a8e6cf 12%,
+      #4a8f3f 22%,
+      #3d7a33 50%,
+      #2d6b1e 100%
+    );
+}
+
+.team-details-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/back.webp') center center / cover no-repeat;
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Sidebar */
+.team-sidebar {
+  width: 240px;
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(180deg, #2d6b1e, #1a4a10);
+  border-right: 4px solid #ffcc00;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+  z-index: 1;
+  position: relative;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.sidebar-icon {
+  font-size: 1.5rem;
+}
+
+.sidebar-title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+  color: #ffcc00;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+}
+
+.sidebar-btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(255,255,255,0.1);
+  padding: 14px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.sidebar-btn:hover {
+  background: rgba(255,204,0,0.15);
+  border-color: rgba(255,204,0,0.3);
+  color: #ffcc00;
+}
+
+.sidebar-btn.active {
+  color: #1a3a10;
+  background: #ffcc00;
+  border-color: #e6b800;
+  box-shadow: 0 3px 0px #b8860b;
+  text-shadow: none;
+}
+
+.sidebar-btn-danger {
+  margin-top: 12px;
+  border-color: rgba(231,76,60,0.3) !important;
+}
+
+.sidebar-btn-danger:hover {
+  background: rgba(231,76,60,0.25) !important;
+  border-color: #e74c3c !important;
+  color: #ff6b6b !important;
+}
+
+/* Content */
+.team-content {
+  flex: 1;
+  padding: 30px 40px;
+  overflow-y: auto;
+  max-height: calc(100vh - 70px);
+  z-index: 1;
+  position: relative;
+}
+
+.section-title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.3rem;
+  color: #ffcc00;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+}
+
+.team-count-badge {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.7rem;
+  color: #1a3a10;
+  background: #ffcc00;
+  padding: 4px 12px;
+  border-radius: 50px;
+  box-shadow: 0 2px 0px #b8860b;
+}
+
+.max-teams-msg {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: #e74c3c;
+  background: rgba(231,76,60,0.1);
+  padding: 20px 30px;
+  border-radius: 16px;
+  border: 2px solid rgba(231,76,60,0.3);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Add Team Form */
+.add-team-form {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 24px;
+  border: 3px solid rgba(255,255,255,0.25);
+  box-shadow: 0 6px 0px rgba(0,0,0,0.08), 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+
+.form-input,
+.form-select {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 1rem;
+  padding: 12px 18px;
+  border-radius: 50px;
+  border: 3px solid #ffcc00;
+  background: rgba(255,255,255,0.9);
+  color: #2d2d2d;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #2ecc71;
+}
+
+.form-select option {
+  background: #fff;
+  color: #2d2d2d;
+}
+
+.form-input-file {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.form-input-file::file-selector-button {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.8rem;
+  color: #1a3a10;
+  background: #ffcc00;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 0px #b8860b;
+}
+
+.form-input-file::file-selector-button:hover {
+  background: #ffdd44;
+  transform: translateY(-1px);
+}
+
+.logo-upload {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.logo-preview {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffcc00;
+  box-shadow: 0 2px 0px #b8860b;
+}
+
+.form-hint {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+
+.btn-add-team {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+  color: #1a3a10;
+  background: linear-gradient(180deg, #ffdd44, #ffcc00);
+  border: none;
+  padding: 14px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0px #b8860b, 0 6px 20px rgba(255,204,0,0.3);
+  margin-top: 8px;
+  letter-spacing: 2px;
+}
+
+.btn-add-team:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0px #b8860b, 0 10px 30px rgba(255,204,0,0.5);
+}
+
+/* Existing teams preview */
+.existing-teams {
+  margin-top: 36px;
+}
+
+.subsection-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+
+.teams-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.team-mini-card {
+  background: rgba(255,255,255,0.15);
+  border: 3px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 140px;
+  transition: all 0.3s ease;
+}
+
+.team-mini-card:hover {
+  border-color: #ffcc00;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 0px rgba(0,0,0,0.1);
+}
+
+.team-mini-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffcc00;
+  box-shadow: 0 2px 0px #b8860b;
+}
+
+.team-mini-logo-placeholder {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: rgba(255,255,255,0.15);
+  border: 3px solid #ffcc00;
+}
+
+.team-mini-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.8rem;
+  color: #fff;
+  text-align: center;
+}
+
+.team-mini-captain {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 0.75rem;
+  color: #ffcc00;
+}
+
+/* Bid Calculations */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: rgba(255,255,255,0.5);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.empty-state p {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.teams-calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+.team-calc-card {
+  background: linear-gradient(180deg, #fff 0%, #f0f8e8 100%);
+  border: 4px solid #ffcc00;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 0px #b8860b, 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.team-calc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 0px #b8860b, 0 14px 35px rgba(0,0,0,0.2);
+}
+
+.team-calc-card.exhausted {
+  border-color: #e74c3c;
+  box-shadow: 0 6px 0px #922b21, 0 10px 25px rgba(231,76,60,0.2);
+}
+
+.team-calc-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border-bottom: 3px dashed #e0e0e0;
+}
+
+.team-calc-logo-wrap {
+  flex-shrink: 0;
+}
+
+.team-calc-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffcc00;
+  box-shadow: 0 2px 0px #b8860b;
+}
+
+.team-calc-logo-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: #e8f5e9;
+  border: 3px solid #ffcc00;
+}
+
+.team-calc-info {
+  flex: 1;
+}
+
+.team-calc-name {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.9rem;
+  color: #2d6b1e;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.team-calc-captain {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 0.85rem;
+  color: #b8860b;
+}
+
+.team-calc-points {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.points-value {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.6rem;
+  color: #2ecc71;
+  display: block;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+
+.points-exhausted .points-value {
+  color: #e74c3c;
+}
+
+.points-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.6rem;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+/* Roster */
+.team-calc-roster {
+  padding: 12px 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.roster-player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 50px;
+  margin-bottom: 4px;
+  transition: background 0.2s;
+}
+
+.roster-player:hover {
+  background: rgba(74,143,63,0.08);
+}
+
+.roster-player.captain-player {
+  background: linear-gradient(90deg, rgba(255,204,0,0.15), rgba(255,204,0,0.05));
+  border: 2px solid rgba(255,204,0,0.3);
+}
+
+.exhausted .roster-player {
+  color: #e74c3c;
+}
+
+.roster-role {
+  font-size: 1.1rem;
+  width: 24px;
+  text-align: center;
+}
+
+.roster-name {
+  flex: 1;
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 0.95rem;
+  color: #2d2d2d;
+}
+
+.exhausted .roster-name {
+  color: #e74c3c;
+}
+
+.roster-badge {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.6rem;
+  color: #1a3a10;
+  background: #ffcc00;
+  padding: 4px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 0px #b8860b;
+}
+
+.roster-bid {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.75rem;
+  color: #2ecc71;
+}
+
+.exhausted .roster-bid {
+  color: #e74c3c;
+}
+
+.roster-empty {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 0.9rem;
+  color: #999;
+  text-align: center;
+  padding: 20px;
+}
+
+.team-calc-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-top: 3px dashed #e0e0e0;
+  background: rgba(74,143,63,0.05);
+}
+
+.total-spent,
+.player-count {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.7rem;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+/* Scrollbar */
+.team-calc-roster::-webkit-scrollbar {
+  width: 6px;
+}
+
+.team-calc-roster::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.team-calc-roster::-webkit-scrollbar-thumb {
+  background: #ffcc00;
+  border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .team-details-page {
+    flex-direction: column;
+  }
+  .team-sidebar {
+    width: 100%;
+    min-height: auto;
+    flex-direction: row;
+    padding: 12px;
+    gap: 8px;
+    overflow-x: auto;
+  }
+  .sidebar-header {
+    display: none;
+  }
+  .team-content {
+    padding: 20px;
+    max-height: none;
+  }
+  .teams-calc-grid {
+    grid-template-columns: 1fr;
+  }
+}

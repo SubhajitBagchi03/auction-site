@@ -1,0 +1,1414 @@
+.auction-page {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 20px 100px;
+  overflow: hidden;
+}
+
+.auction-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/back.webp') center center / cover no-repeat;
+  opacity: 0.35;
+  z-index: -1;
+}
+
+.auction-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(180deg,
+      #87ceeb 0%,
+      #a8e6cf 15%,
+      #4a8f3f 25%,
+      #3d7a33 40%,
+      #4a8f3f 60%,
+      #3d7a33 80%,
+      #2d6b1e 100%
+    );
+  z-index: -2;
+}
+
+/* Cartoon Clouds */
+.auction-page::after {
+  content: '☁️  ☁️    ☁️      ☁️   ☁️';
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  font-size: 3rem;
+  text-align: center;
+  z-index: 0;
+  opacity: 0.7;
+  animation: cloudDrift 20s linear infinite;
+  white-space: nowrap;
+  letter-spacing: 60px;
+  pointer-events: none;
+}
+
+@keyframes cloudDrift {
+  0% { transform: translateX(-10%); }
+  100% { transform: translateX(10%); }
+}
+
+/* Cricket decorations - now bright and visible */
+.cricket-deco {
+  position: fixed;
+  font-size: 4rem;
+  opacity: 0.35;
+  z-index: 0;
+  animation: float 5s ease-in-out infinite;
+  pointer-events: none;
+  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
+}
+
+.deco-bat { top: 18%; left: 5%; animation-delay: 0s; font-size: 4.5rem; }
+.deco-ball { top: 55%; right: 6%; animation-delay: 1.5s; font-size: 3.5rem; }
+.deco-wicket { bottom: 15%; left: 8%; animation-delay: 3s; font-size: 3rem; }
+.deco-bat2 { top: 25%; right: 4%; animation-delay: 4.5s; transform: scaleX(-1); font-size: 3.5rem; }
+.deco-ball2 { top: 40%; left: 3%; animation-delay: 2s; font-size: 2.5rem; opacity: 0.25; }
+.deco-trophy { bottom: 30%; right: 10%; animation-delay: 1s; font-size: 3rem; opacity: 0.2; }
+.deco-target { top: 70%; left: 12%; animation-delay: 3.5s; font-size: 2.8rem; opacity: 0.2; }
+.deco-glove { top: 12%; right: 15%; animation-delay: 5s; font-size: 2.5rem; opacity: 0.2; }
+.deco-bat3 { bottom: 8%; right: 20%; animation-delay: 2.5s; font-size: 3rem; opacity: 0.2; transform: scaleX(-1); }
+.deco-star { top: 35%; right: 12%; animation-delay: 4s; font-size: 2rem; opacity: 0.25; }
+.deco-ball3 { bottom: 25%; left: 18%; animation-delay: 0.5s; font-size: 2.2rem; opacity: 0.2; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(8deg); }
+}
+
+/* Welcome Screen */
+.welcome-screen {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.welcome-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ffcc00;
+  border-radius: 50%;
+  animation: particleUp linear infinite;
+  opacity: 0;
+  box-shadow: 0 0 4px rgba(255,204,0,0.5);
+}
+
+@keyframes particleUp {
+  0% { transform: translateY(100vh); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+.welcome-content {
+  position: relative;
+  z-index: 1;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 50px 60px;
+  border: 4px solid rgba(255,255,255,0.3);
+  box-shadow: 0 8px 0px rgba(0,0,0,0.1), 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.welcome-icon {
+  font-size: 5.5rem;
+  margin-bottom: 16px;
+  animation: trophy-bounce 2s ease-in-out infinite;
+  filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.2));
+}
+
+@keyframes trophy-bounce {
+  0%, 100% { transform: scale(1) rotate(-3deg); }
+  50% { transform: scale(1.15) rotate(3deg); }
+}
+
+.welcome-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.6rem;
+  color: #fff;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.welcome-league {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2.5rem;
+  color: #ffcc00;
+  text-shadow: 3px 3px 0px #b8860b, 4px 4px 0px rgba(0,0,0,0.3);
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.welcome-subtitle {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.15);
+}
+
+.welcome-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+}
+
+.divider-line {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #ffcc00, transparent);
+  border-radius: 4px;
+}
+
+.welcome-stats {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.15);
+  padding: 12px 24px;
+  border-radius: 16px;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+.stat-number {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2.2rem;
+  color: #ffcc00;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.stat-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.btn-start-auction {
+  position: relative;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.2rem;
+  color: #1a3a10;
+  background: linear-gradient(180deg, #ffdd44, #ffcc00, #e6b800);
+  border: none;
+  padding: 18px 50px;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0px #b8860b, 0 8px 20px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto 16px;
+  text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
+}
+
+.btn-start-auction:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0px #b8860b, 0 12px 30px rgba(0,0,0,0.3);
+}
+
+.btn-start-auction:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0px #b8860b;
+}
+
+.btn-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: glowSweep 2s linear infinite;
+}
+
+@keyframes glowSweep {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.btn-unsold-auction {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(180deg, #ff8844, #e67722);
+  border: none;
+  padding: 14px 36px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px auto;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 0px #cc5500, 0 6px 15px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+}
+
+.btn-unsold-auction:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0px #cc5500, 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.btn-reset {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  color: #fff;
+  background: linear-gradient(180deg, #e74c3c, #c0392b);
+  border: none;
+  padding: 10px 28px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px auto;
+  box-shadow: 0 3px 0px #922b21, 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.btn-reset:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0px #922b21, 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.upload-hint {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 1px;
+}
+
+/* Upload button */
+.btn-upload {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  color: #fff;
+  background: linear-gradient(180deg, #6c5ce7, #5a4bd6);
+  border: none;
+  padding: 14px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 0px #4834b0, 0 6px 20px rgba(108,92,231,0.3);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.btn-upload:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0px #4834b0, 0 10px 30px rgba(108,92,231,0.5);
+}
+
+.upload-icon {
+  font-size: 1.3rem;
+}
+
+/* Active Auction */
+.auction-active {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.player-counter {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.9rem;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0,0,0,0.2);
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+}
+
+.round-badge {
+  background: #e74c3c;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  box-shadow: 0 2px 0px #922b21;
+}
+
+/* Player card */
+.player-card {
+  background: linear-gradient(180deg, #fff 0%, #f0f8e8 100%);
+  border: 4px solid #ffcc00;
+  border-radius: 24px;
+  padding: 36px;
+  text-align: center;
+  width: 100%;
+  transition: all 0.5s ease;
+  animation: cardAppear 0.6s ease-out;
+  box-shadow: 0 6px 0px #b8860b, 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.player-card.bidding-active {
+  border-color: #e74c3c;
+  box-shadow: 0 6px 0px #922b21, 0 0 30px rgba(231,76,60,0.3);
+  animation: cardAppear 0.6s ease-out, pulse-border 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% { box-shadow: 0 6px 0px #922b21, 0 0 15px rgba(231,76,60,0.2); }
+  50% { box-shadow: 0 6px 0px #922b21, 0 0 35px rgba(231,76,60,0.5); }
+}
+
+@keyframes cardAppear {
+  0% { transform: scale(0.7) translateY(40px) rotate(-5deg); opacity: 0; }
+  60% { transform: scale(1.05) translateY(-5px) rotate(2deg); }
+  100% { transform: scale(1) translateY(0) rotate(0deg); opacity: 1; }
+}
+
+.player-photo-wrapper {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #ffcc00;
+  box-shadow: 0 4px 0px #b8860b, 0 6px 15px rgba(0,0,0,0.15);
+  background: #e8f5e9;
+}
+
+.player-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.player-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+}
+
+.placeholder-icon {
+  font-size: 4rem;
+}
+
+.doodle-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.player-name {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.3rem;
+  color: #2d6b1e;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  line-height: 1.4;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.08);
+}
+
+.player-role {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  padding: 8px 22px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 0px rgba(0,0,0,0.1);
+}
+
+.role-batsman {
+  background: #3498db;
+  color: #fff;
+  box-shadow: 0 3px 0px #2176ad;
+}
+
+.role-bowler {
+  background: #e74c3c;
+  color: #fff;
+  box-shadow: 0 3px 0px #b63225;
+}
+
+.role-allrounder {
+  background: #2ecc71;
+  color: #fff;
+  box-shadow: 0 3px 0px #25a25a;
+}
+
+.role-keeper {
+  background: #9b59b6;
+  color: #fff;
+  box-shadow: 0 3px 0px #7d4793;
+}
+
+/* Bid section */
+.bid-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-start-bid {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(180deg, #e74c3c, #c0392b);
+  border: none;
+  padding: 16px 44px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0px #922b21, 0 6px 20px rgba(231,76,60,0.3);
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+}
+
+.btn-start-bid:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0px #922b21, 0 10px 30px rgba(231,76,60,0.5);
+}
+
+.bid-controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  border: 3px solid rgba(255,255,255,0.3);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.bid-timer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2.2rem;
+  padding: 12px 30px;
+  border-radius: 16px;
+  letter-spacing: 3px;
+}
+
+.timer-running {
+  color: #fff;
+  background: #e74c3c;
+  box-shadow: 0 4px 0px #922b21;
+  animation: timer-pulse 1s ease-in-out infinite;
+}
+
+.timer-stopped {
+  color: #1a3a10;
+  background: #ffcc00;
+  box-shadow: 0 4px 0px #b8860b;
+}
+
+@keyframes timer-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.current-bid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.bid-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+
+.bid-value {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 3rem;
+  color: #ffcc00;
+  text-shadow: 3px 3px 0px #b8860b, 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+.bid-unit {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 2px;
+}
+
+.bid-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-bid-increment {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(180deg, #2ecc71, #27ae60);
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0px #1e8b4f, 0 6px 15px rgba(46,204,113,0.3);
+  letter-spacing: 1px;
+}
+
+.btn-bid-increment:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0px #1e8b4f, 0 8px 20px rgba(46,204,113,0.5);
+}
+
+.custom-bid {
+  display: flex;
+  gap: 4px;
+}
+
+.custom-bid-input {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 1rem;
+  width: 90px;
+  padding: 10px 14px;
+  border-radius: 50px;
+  border: 3px solid #ffcc00;
+  background: rgba(255,255,255,0.9);
+  color: #2d2d2d;
+  outline: none;
+  transition: border-color 0.3s;
+  text-align: center;
+}
+
+.custom-bid-input:focus {
+  border-color: #2ecc71;
+}
+
+.btn-bid-custom {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  color: #1a3a10;
+  background: #ffcc00;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 0px #b8860b;
+}
+
+.btn-bid-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0px #b8860b;
+}
+
+.btn-bid-reset {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.8rem;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid rgba(255,255,255,0.3);
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-bid-reset:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.btn-stop-bid {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 0.9rem;
+  color: #fff;
+  background: linear-gradient(180deg, #e74c3c, #c0392b);
+  border: none;
+  padding: 14px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0px #922b21, 0 6px 20px rgba(231,76,60,0.3);
+  letter-spacing: 2px;
+}
+
+.btn-stop-bid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0px #922b21, 0 8px 25px rgba(231,76,60,0.5);
+}
+
+/* Assignment section */
+.assignment-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.assign-team {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.team-select {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 0.95rem;
+  padding: 12px 18px;
+  border-radius: 50px;
+  border: 3px solid #ffcc00;
+  background: rgba(255,255,255,0.9);
+  color: #2d2d2d;
+  outline: none;
+  min-width: 220px;
+  cursor: pointer;
+}
+
+.team-select option {
+  background: #fff;
+  color: #2d2d2d;
+}
+
+.btn-assign {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  color: #fff;
+  background: linear-gradient(180deg, #2ecc71, #27ae60);
+  border: none;
+  padding: 12px 26px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0px #1e8b4f;
+}
+
+.btn-assign:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0px #1e8b4f;
+}
+
+.btn-assign:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-unsold {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  color: #fff;
+  background: linear-gradient(180deg, #95a5a6, #7f8c8d);
+  border: none;
+  padding: 12px 32px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 0px #5d6d6e;
+}
+
+.btn-unsold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0px #5d6d6e;
+}
+
+.btn-next-player {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+  color: #1a3a10;
+  background: linear-gradient(180deg, #ffdd44, #ffcc00);
+  border: none;
+  padding: 16px 44px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0px #b8860b, 0 6px 20px rgba(255,204,0,0.3);
+  letter-spacing: 2px;
+}
+
+.btn-next-player:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0px #b8860b, 0 10px 30px rgba(255,204,0,0.5);
+}
+
+.auction-reset {
+  margin-top: 16px;
+}
+
+/* Finished screen */
+.finished-screen {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 50px 60px;
+  border: 4px solid rgba(255,255,255,0.3);
+  box-shadow: 0 8px 0px rgba(0,0,0,0.1);
+}
+
+.finished-icon {
+  font-size: 5.5rem;
+  margin-bottom: 16px;
+  animation: trophy-bounce 2s ease-in-out infinite;
+  filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.2));
+}
+
+.finished-title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2rem;
+  color: #ffcc00;
+  margin-bottom: 12px;
+  text-shadow: 3px 3px 0px #b8860b, 4px 4px 0px rgba(0,0,0,0.3);
+  line-height: 1.5;
+}
+
+.finished-subtitle {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.finished-stats {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #2ecc71;
+  color: #fff;
+  padding: 20px 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 0px #1e8b4f;
+}
+
+.stat-card.unsold-card {
+  background: #e74c3c;
+  box-shadow: 0 4px 0px #922b21;
+}
+
+.stat-num {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 2.2rem;
+  color: #fff;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.stat-lbl {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Number input remove arrows */
+.custom-bid-input::-webkit-outer-spin-button,
+.custom-bid-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.custom-bid-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Grass stripe pattern at bottom */
+.auction-page .grass-stripe {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: repeating-linear-gradient(90deg, #4a8f3f 0px, #4a8f3f 40px, #3d7a33 40px, #3d7a33 80px);
+  z-index: -1;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .welcome-league {
+    font-size: 1.6rem;
+  }
+  .welcome-content {
+    padding: 30px 24px;
+  }
+  .player-card {
+    padding: 24px;
+  }
+  .player-photo-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+  .bid-value {
+    font-size: 2rem;
+  }
+}
+
+/* Upload Modal */
+.upload-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.upload-modal {
+  background: linear-gradient(180deg, #fff 0%, #f0f8e8 100%);
+  border: 4px solid #ffcc00;
+  border-radius: 24px;
+  padding: 36px;
+  width: 90%;
+  max-width: 460px;
+  position: relative;
+  box-shadow: 0 6px 0px #b8860b, 0 20px 60px rgba(0,0,0,0.3);
+  animation: modalPop 0.3s ease;
+}
+
+@keyframes modalPop {
+  0% { transform: scale(0.8) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.upload-modal-title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.3rem;
+  color: #2d6b1e;
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+}
+
+.upload-option {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.upload-option-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.9rem;
+  color: #2d6b1e;
+  letter-spacing: 1px;
+}
+
+.btn-upload-file {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  color: #fff;
+  background: linear-gradient(180deg, #6c5ce7, #5a4bd6);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 0px #4834b0;
+}
+
+.btn-upload-file:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0px #4834b0;
+}
+
+.upload-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.upload-divider::before,
+.upload-divider::after {
+  content: '';
+  flex: 1;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ddd, transparent);
+  border-radius: 3px;
+}
+
+.upload-divider span {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.8rem;
+  color: #999;
+  letter-spacing: 2px;
+}
+
+.sheet-url-input {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 1rem;
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 50px;
+  border: 3px solid #ffcc00;
+  background: #fff;
+  color: #2d2d2d;
+  outline: none;
+  transition: border-color 0.3s;
+  text-align: center;
+}
+
+.sheet-url-input:focus {
+  border-color: #2ecc71;
+}
+
+.btn-import-sheet {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  color: #fff;
+  background: linear-gradient(180deg, #2ecc71, #27ae60);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 0px #1e8b4f;
+}
+
+.btn-import-sheet:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0px #1e8b4f;
+}
+
+.btn-import-sheet:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.upload-hint-small {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 0.8rem;
+  color: #999;
+  text-align: center;
+}
+
+.btn-close-modal {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.4rem;
+  color: #999;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-close-modal:hover {
+  background: rgba(0,0,0,0.08);
+  color: #e74c3c;
+}
+
+/* Rules summary */
+.rules-summary {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.rules-summary span {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.75rem;
+  color: #1a3a10;
+  background: rgba(255,255,255,0.6);
+  padding: 6px 14px;
+  border-radius: 50px;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+/* Bid warning */
+.bid-warning {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.75rem;
+  color: #e74c3c;
+  background: rgba(231,76,60,0.15);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-top: 4px;
+}
+
+.min-bid-warning {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.min-bid-warning p {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 1rem;
+  color: #e74c3c;
+  background: rgba(231,76,60,0.1);
+  padding: 10px 20px;
+  border-radius: 16px;
+  border: 2px solid rgba(231,76,60,0.2);
+}
+
+/* Pick Unsold Screen */
+.pick-unsold-screen {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+.pick-title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.8rem;
+  color: #ffcc00;
+  text-shadow: 3px 3px 0px #b8860b;
+  margin-bottom: 8px;
+}
+
+.pick-subtitle {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 24px;
+}
+
+.pick-team-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.pick-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.all-teams-full-banner {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: #2ecc71;
+  background: rgba(46,204,113,0.15);
+  padding: 14px 30px;
+  border-radius: 50px;
+  border: 2px solid rgba(46,204,113,0.3);
+  margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.unsold-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.unsold-card {
+  background: rgba(255,255,255,0.95);
+  border: 3px solid #ffcc00;
+  border-radius: 20px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 3px 0px #b8860b;
+  transition: all 0.3s ease;
+}
+
+.unsold-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0px #b8860b;
+}
+
+.unsold-photo-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ffcc00;
+  flex-shrink: 0;
+  background: #e8f5e9;
+}
+
+.unsold-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.unsold-info {
+  flex: 1;
+  text-align: left;
+}
+
+.unsold-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  color: #2d6b1e;
+  margin-bottom: 4px;
+}
+
+.player-role-mini {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-pick {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.75rem;
+  color: #fff;
+  background: #2ecc71;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 2px 0px #1e8b4f;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.btn-pick:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 0px #1e8b4f;
+}
+
+/* Lottery Section */
+.lottery-section {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(255,255,255,0.25);
+  border-radius: 24px;
+  padding: 24px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.lottery-title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.2rem;
+  color: #ffcc00;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+  margin-bottom: 8px;
+}
+
+.lottery-desc {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 16px;
+}
+
+.lottery-players {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.lottery-chip {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.8rem;
+  color: #1a3a10;
+  background: #ffcc00;
+  padding: 8px 16px;
+  border-radius: 50px;
+  box-shadow: 0 2px 0px #b8860b;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== Overlay Message Box ===== */
+.overlay-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.2s ease;
+}
+
+.overlay-box {
+  background: linear-gradient(180deg, #fff 0%, #f0f8e8 100%);
+  border: 5px solid #ffcc00;
+  border-radius: 28px;
+  padding: 40px 48px;
+  max-width: 520px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 0px #b8860b, 0 24px 60px rgba(0,0,0,0.4);
+  animation: modalPop 0.35s ease;
+}
+
+.overlay-warning {
+  border-color: #f39c12;
+  box-shadow: 0 8px 0px #c67f00, 0 24px 60px rgba(243,156,18,0.3);
+}
+
+.overlay-error {
+  border-color: #e74c3c;
+  box-shadow: 0 8px 0px #a93226, 0 24px 60px rgba(231,76,60,0.3);
+}
+
+.overlay-title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.5rem;
+  color: #2d6b1e;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+
+.overlay-warning .overlay-title { color: #c67f00; }
+.overlay-error .overlay-title { color: #c0392b; }
+
+.overlay-text {
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.btn-overlay-dismiss {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(180deg, #2ecc71, #27ae60);
+  border: none;
+  padding: 14px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0px #1e8b4f;
+  letter-spacing: 1px;
+}
+
+.btn-overlay-dismiss:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0px #1e8b4f;
+}
