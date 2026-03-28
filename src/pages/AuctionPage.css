@@ -423,8 +423,8 @@
 }
 
 .player-photo-wrapper {
-  width: 150px;
-  height: 150px;
+  width: 220px;
+  height: 220px;
   margin: 0 auto 16px;
   border-radius: 50%;
   overflow: hidden;
@@ -437,6 +437,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
 }
 
 .player-photo-placeholder {
@@ -902,6 +903,7 @@
 
 .custom-bid-input[type=number] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 /* Grass stripe pattern at bottom */
@@ -927,8 +929,8 @@
     padding: 24px;
   }
   .player-photo-wrapper {
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
   }
   .bid-value {
     font-size: 2rem;

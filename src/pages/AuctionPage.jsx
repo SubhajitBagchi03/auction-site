@@ -525,7 +525,7 @@ export default function AuctionPage() {
                             const realIdx = teams.indexOf(team);
                             return (
                               <option key={realIdx} value={realIdx}>
-                                {team.name} ({team.remainingPoints} pts | {TEAM_SIZE - getTeamPlayerCount(team)} slots)
+                                {team.name}
                               </option>
                             );
                           })}
